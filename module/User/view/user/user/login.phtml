@@ -1,0 +1,33 @@
+<?php
+$title = 'User';
+$this->headTitle($title);
+?>
+<h2><?php echo $this->escapeHtml($title); ?></h2>
+<p><a href="<?php echo $this->url('register');?>">Registration</a></p>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('login/process', array('action' => 'login')));
+$form->setAttribute('class','form-horizontal');
+$form->prepare(); ?>
+<?php echo $this->form()->openTag($form);?>
+<div class="control-group">
+    <label class="control-label" for="inputLogin">Login</label>
+    <div class="controls">
+        <?php echo $this->formRow($form->get('login')); ?>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+        <?php echo $this->formRow($form->get('password')); ?>
+    </div>
+</div>
+<div class="control-group">
+    <div class="controls">
+        <label class="checkbox">
+            <input type="checkbox"> Remember me
+        </label>
+        <?php echo $this->formSubmit($form->get('submit'));?>
+    </div>
+</div>
+<?php echo $this->form()->closeTag(); ?>
